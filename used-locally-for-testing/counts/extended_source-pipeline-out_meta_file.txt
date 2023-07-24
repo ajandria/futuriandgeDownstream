@@ -1,0 +1,11 @@
+sample_id,is_single_end,strandedness,count_matrix_path
+MICE1_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE1_T1_featureCounts_matrix.txt
+MICE2_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE2_T1_featureCounts_matrix.txt
+MICE3_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE3_T1_featureCounts_matrix.txt
+MICE4_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE4_T1_featureCounts_matrix.txt
+MICE5_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE5_T1_featureCounts_matrix.txt
+MICE41_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE41_T1_featureCounts_matrix.txt
+MICE42_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE42_T1_featureCounts_matrix.txt
+MICE43_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE43_T1_featureCounts_matrix.txt
+MICE44_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE44_T1_featureCounts_matrix.txt
+MICE45_T1,false,reverse,/Users/adrian/General_projects/futuriandgeDownstream/used-locally-for-testing/counts/MICE45_T1_featureCounts_matrix.txt
