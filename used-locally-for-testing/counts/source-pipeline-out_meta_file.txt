@@ -1,0 +1,3 @@
+sample_id,is_single_end,strandedness,count_matrix_path
+M24_T1,false,reverse,/archive/users/ajan/computational_pipelines/futuriandge/testing/M24_T1_featureCounts_matrix.txt
+M5_T1,false,reverse,/archive/users/ajan/computational_pipelines/futuriandge/testing/M5_T1_featureCounts_matrix.txt
