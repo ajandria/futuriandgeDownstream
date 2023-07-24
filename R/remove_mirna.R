@@ -25,9 +25,9 @@
 #' }
 remove_mirna <- function(count_matrix, organism) {
   if (organism == "homo_sapiens") {
-    gtf_path <- system.file("extdata", "Homo_sapiens.GRCh38.110.chr.gtf", package = "futuriandgeDownstream")
+    gtf_path <- system.file("extdata", "Homo_sapiens.GRCh38.110.chr.gtf.gz", package = "futuriandgeDownstream")
   } else if (organism == "mus_musculus") {
-    gtf_path <- system.file("extdata", "Mus_musculus.GRCm39.110.chr.gtf", package = "futuriandgeDownstream")
+    gtf_path <- system.file("extdata", "Mus_musculus.GRCm39.110.chr.gtf.gz", package = "futuriandgeDownstream")
   } else {
     stop(message("Organism not supported..."))
   }
