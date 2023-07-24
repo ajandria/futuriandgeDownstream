@@ -29,6 +29,8 @@ render_dge_html_report(
 \item{organism}{A string specifying the organism used in the analysis.}
 
 \item{output_name}{A string specifying the name of the output .html file.}
+
+\item{output_dir}{A string specifying the output directory.}
 }
 \value{
 No return value, called for side effects

@@ -6,11 +6,14 @@
 #'
 #' @param count_matrix A data frame representing the count matrix.
 #' It must contain a column named "Geneid" that includes gene identifiers.
-#' @param gtf_path A character string indicating the path to a GTF file.
-#' This file should contain information about the biotypes of each gene.
+#' @param organism A character string indicating the organism.
+#' It is used to properly import a respective GTF file.
 #'
 #' @return A data frame. It represents the count matrix after miRNA-related rows have been removed.
 #' The data frame is sorted by the "Geneid" column in ascending order.
+#'
+#' @importFrom rlang .data
+#'
 #' @export
 #'
 #' @examples
@@ -35,14 +38,14 @@ remove_mirna <- function(count_matrix, organism) {
   # Import GTF and filter for miRNA rows
   gtf_df_filtered <- rtracklayer::import(gtf_path) %>%
     as.data.frame() %>%
-    dplyr::select(gene_id, gene_biotype) %>%
-    dplyr::filter(gene_biotype == "miRNA")
+    dplyr::select(.data$gene_id, .data$gene_biotype) %>%
+    dplyr::filter(.data$gene_biotype == "miRNA")
 
   # Define negation of `%in%`
   `%nin%` <- Negate(`%in%`)
 
   # Remove miRNA rows and sort by gene ID
   count_matrix %>%
-    dplyr::filter(Geneid %nin% gtf_df_filtered$gene_id) %>%
-    dplyr::arrange(Geneid)
+    dplyr::filter(.data$Geneid %nin% gtf_df_filtered$gene_id) %>%
+    dplyr::arrange(.data$Geneid)
 }

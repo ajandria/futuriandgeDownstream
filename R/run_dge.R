@@ -20,12 +20,12 @@
 run_dge <- function(count_matrix_raw, metadata_raw, comparisons) {
   # Remove _T.* from sample_id and convert condition to factor
   metadata <- metadata_raw %>%
-    dplyr::mutate(sample_id = gsub("_T.*", "", sample_id)) %>%
-    dplyr::mutate(condition = factor(condition))
+    dplyr::mutate(sample_id = gsub("_T.*", "", .data$sample_id)) %>%
+    dplyr::mutate(condition = factor(.data$condition))
 
   # Select Geneid and all columns with names as in metadata[["sample_id"]]
   count_matrix <- count_matrix_raw %>%
-    dplyr::select(Geneid, dplyr::all_of(gsub("_T.*", "", metadata[["sample_id"]]))) %>%
+    dplyr::select(.data$Geneid, dplyr::all_of(gsub("_T.*", "", metadata[["sample_id"]]))) %>%
     tibble::column_to_rownames(var = "Geneid")
 
   # Check if samples are in the same order in count_matrix and metadata
@@ -59,7 +59,7 @@ run_dge <- function(count_matrix_raw, metadata_raw, comparisons) {
   counts_norm_sorted <- counts_norm %>%
     data.frame() %>%
     tibble::rownames_to_column(var = "Geneid") %>%
-    dplyr::arrange(Geneid)
+    dplyr::arrange(.data$Geneid)
 
   # remove X from first colnames starting with numbers...
   colnames(counts_norm_sorted) <- gsub("^X", "", colnames(counts_norm_sorted))
@@ -89,7 +89,7 @@ run_dge <- function(count_matrix_raw, metadata_raw, comparisons) {
       unlist()
 
     compared_samples <- metadata %>%
-      dplyr::filter(condition %in% compared_groups)
+      dplyr::filter(.data$condition %in% compared_groups)
 
     # Add metadata to results
     deseq2_results_list[[comparison_name]]$compared_samples <- c(compared_samples$sample_id, rep(NA, length(deseq2_results_list[[comparison_name]]$log2FoldChange) - length(compared_samples$sample_id)))

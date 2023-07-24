@@ -8,9 +8,10 @@
 #' @return A data frame of the input file with the 'Chr', 'Start', 'End', 'Strand', and 'Length' columns removed.
 #' @importFrom dplyr select
 #' @importFrom readr read_tsv
+#' @importFrom rlang .data
 read_in_feature_counts <- function(file) {
   readr::read_tsv(file, col_names = T, comment = "#") %>%
-    dplyr::select(-Chr, -Start, -End, -Strand, -Length)
+    dplyr::select(-c(.data$Chr, .data$Start, .data$End, .data$Strand, .data$Length))
 }
 
 #' Export Data Table
@@ -19,6 +20,8 @@ read_in_feature_counts <- function(file) {
 #' adding the sample names and the parameters used in the DESeq2 analysis.
 #'
 #' @param comparison_name A DESeq2 results object.
+#' @param meta Metadata table.
+#' @param biomart_mapping Biomart annotation mapping table.
 #'
 #' @return A data frame ready for export. It includes information about the compared samples
 #' and the parameters used for DESeq2 analysis.
@@ -26,9 +29,10 @@ read_in_feature_counts <- function(file) {
 #' @importFrom tibble rownames_to_column
 #' @importFrom stringr str_split
 #' @importFrom purrr map_dfr
-export_data <- function(comparison_name) {
+#' @importFrom rlang .data
+export_data <- function(comparison_name, meta, biomart_mapping) {
   # Check for compared samples
-  meta_export_table <- dplyr::filter(meta, group %in%
+  meta_export_table <- dplyr::filter(meta, .data$group %in%
     c(
       unlist(stringr::str_split(comparison_name@elementMetadata$description[2], " "))[6],
       unlist(stringr::str_split(comparison_name@elementMetadata$description[2], " "))[8]
@@ -37,8 +41,8 @@ export_data <- function(comparison_name) {
   # Prepare the data for export
   export_table <- data.frame(comparison_name) %>%
     tibble::rownames_to_column(var = "Geneid") %>%
-    arrange(Geneid) %>%
-    mutate(
+    dplyr::arrange(.data$Geneid) %>%
+    dplyr::mutate(
       Compared_samples = c(
         meta_export_table[["sample"]],
         rep(NA, nrow(comparison_name) - length(meta_export_table[["sample"]]))
@@ -50,7 +54,7 @@ export_data <- function(comparison_name) {
     )
 
   # add hgnc
-  export_table <- left_join(export_table, biomart_mapping)
+  export_table <- dplyr::left_join(export_table, biomart_mapping)
 
   export_table
 }

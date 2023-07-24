@@ -10,8 +10,8 @@ remove_mirna(count_matrix, organism)
 \item{count_matrix}{A data frame representing the count matrix.
 It must contain a column named "Geneid" that includes gene identifiers.}
 
-\item{gtf_path}{A character string indicating the path to a GTF file.
-This file should contain information about the biotypes of each gene.}
+\item{organism}{A character string indicating the organism.
+It is used to properly import a respective GTF file.}
 }
 \value{
 A data frame. It represents the count matrix after miRNA-related rows have been removed.

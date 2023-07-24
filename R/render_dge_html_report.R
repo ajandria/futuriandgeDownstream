@@ -12,6 +12,7 @@
 #' @param raw_counts A data frame containing the raw count matrix.
 #' @param organism A string specifying the organism used in the analysis.
 #' @param output_name A string specifying the name of the output .html file.
+#' @param output_dir A string specifying the output directory.
 #'
 #' @importFrom rmarkdown render
 #' @importFrom utils system.file

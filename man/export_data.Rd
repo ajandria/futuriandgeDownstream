@@ -4,10 +4,14 @@
 \alias{export_data}
 \title{Export Data Table}
 \usage{
-export_data(comparison_name)
+export_data(comparison_name, meta, biomart_mapping)
 }
 \arguments{
 \item{comparison_name}{A DESeq2 results object.}
+
+\item{meta}{Metadata table.}
+
+\item{biomart_mapping}{Biomart annotation mapping table.}
 }
 \value{
 A data frame ready for export. It includes information about the compared samples
