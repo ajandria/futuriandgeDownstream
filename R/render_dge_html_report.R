@@ -18,6 +18,9 @@
 #' @importFrom utils system.file
 #'
 #' @return No return value, called for side effects
+#'
+#' @export
+#'
 render_dge_html_report <- function(comparison_name,
                           dge_results_in,
                           metadata,

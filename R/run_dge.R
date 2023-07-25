@@ -17,6 +17,9 @@
 #' @importFrom dplyr select arrange filter bind_rows mutate
 #' @importFrom tibble rownames_to_column
 #' @importFrom purrr map_dfr
+#'
+#' @export
+#'
 run_dge <- function(count_matrix_raw, metadata_raw, comparisons) {
   # Remove _T.* from sample_id and convert condition to factor
   metadata <- metadata_raw %>%

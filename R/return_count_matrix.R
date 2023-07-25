@@ -8,6 +8,7 @@
 #'
 #' @return A data frame representing the merged count matrix.
 #' The column names of the matrix are modified to remove any substring after (and including) "_".
+#'
 #' @export
 #'
 #' @examples

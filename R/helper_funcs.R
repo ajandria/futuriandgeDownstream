@@ -9,6 +9,9 @@
 #' @importFrom dplyr select
 #' @importFrom readr read_tsv
 #' @importFrom rlang .data
+#'
+#' @export
+#'
 read_in_feature_counts <- function(file) {
   readr::read_tsv(file, col_names = T, comment = "#") %>%
     dplyr::select(-c(.data$Chr, .data$Start, .data$End, .data$Strand, .data$Length))
@@ -30,6 +33,9 @@ read_in_feature_counts <- function(file) {
 #' @importFrom stringr str_split
 #' @importFrom purrr map_dfr
 #' @importFrom rlang .data
+#'
+#' @export
+#'
 export_data <- function(comparison_name, meta, biomart_mapping) {
   # Check for compared samples
   meta_export_table <- dplyr::filter(meta, .data$group %in%
