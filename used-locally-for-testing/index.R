@@ -12,13 +12,13 @@ contrasts <- readxl::read_excel(user_file, sheet = 'comparisons')
 # Load --------------------------------------------------------------------
 
 # F1
-counts <- return_count_matrix(downstream_ch_file)
+counts <- futuriandgeDownstream::return_count_matrix(downstream_ch_file)
 
 # F2
-counts_no_mirnas <- remove_mirna(counts, organism)
+counts_no_mirnas <- futuriandgeDownstream::remove_mirna(counts, organism)
 
 # F3
-dge_results <- run_dge(count_matrix_raw = counts_no_mirnas,
+dge_results <- futuriandgeDownstream::run_dge(count_matrix_raw = counts_no_mirnas,
                        metadata_raw = sample_metadata,
                        comparisons = contrasts)
 
@@ -26,7 +26,7 @@ dge_results <- run_dge(count_matrix_raw = counts_no_mirnas,
 save(dge_results, file = 'dge_results.RData')
 
 # F4
-plot_diagnostic_plots(count_matrix_raw = counts_no_mirnas,
+futuriandgeDownstream::plot_diagnostic_plots(count_matrix_raw = counts_no_mirnas,
                       metadata_raw = sample_metadata)
 
 # F5
@@ -43,7 +43,7 @@ for (groups in contrasts_for_report$compared_gorups) {
                                  "",
                                  sample_metadata$sample_id)
 
-  render_dge_html_report(
+  futuriandgeDownstream::render_dge_html_report(
     comparison_name = groups,
     dge_results_in = data.frame(dge_results$dge_results[[groups]]),
     metadata = sample_metadata,

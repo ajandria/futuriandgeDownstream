@@ -36,7 +36,7 @@ RUN R -e "renv::restore()"
 
 # Install your package from GitHub
 RUN R -e "install.packages('remotes')"
-RUN R -e "remotes::install_github('ajandria/futuriandgeDownstream')"
+RUN R -e "remotes::install_github('ajandria/futuriandgeDownstream', ref = 'HEAD')"
 
 # Copy test files into Dockerfile
- COPY used-locally-for-testing used-locally-for-testing
+COPY used-locally-for-testing used-locally-for-testing

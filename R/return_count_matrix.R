@@ -22,7 +22,7 @@ return_count_matrix <- function(downstream_ch_file) {
 
   # Merge count matrices from different paths
   merged_count_matrix <- meta_downstream_file[["count_matrix_path"]] %>%
-    purrr::map(read_in_feature_counts) %>%
+    purrr::map(futuriandgeDownstream::read_in_feature_counts) %>%
     purrr::reduce(dplyr::inner_join)
 
   # Clean column names
