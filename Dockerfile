@@ -34,5 +34,6 @@ COPY renv/settings.json renv/settings.json
 # Finally, you can run renv::restore() to restore packages as defined in the lockfile:
 RUN R -e "renv::restore()"
 
-# Copy the rest of your project files
-COPY . .
+# Install your package from GitHub
+RUN R -e "install.packages('remotes')"
+RUN R -e "remotes::install_github('ajandria/futuriandgeDownstream')"
