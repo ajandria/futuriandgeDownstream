@@ -12,9 +12,11 @@ contrasts <- readxl::read_excel(user_file, sheet = 'comparisons')
 # Load --------------------------------------------------------------------
 
 # F1
+print('Running futuriandgeDownstream::return_count_matrix')
 counts <- futuriandgeDownstream::return_count_matrix(downstream_ch_file)
 
 # F2
+print('Running futuriandgeDownstream::remove_mirna')
 counts_no_mirnas <- futuriandgeDownstream::remove_mirna(counts, organism)
 
 # F3

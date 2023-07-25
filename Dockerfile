@@ -36,7 +36,11 @@ RUN R -e "renv::restore()"
 
 # Install your package from GitHub
 RUN R -e "install.packages('remotes')"
-RUN R -e "remotes::install_github('ajandria/futuriandgeDownstream', ref = 'HEAD')"
+RUN echo "Cache busting value: $(date)" && R -e "remotes::install_github('ajandria/futuriandgeDownstream')"
 
 # Copy test files into Dockerfile
 COPY used-locally-for-testing used-locally-for-testing
+
+# Install necessary system libraries for pandoc and rmarkdown
+RUN apt-get update && apt-get install -y \
+    pandoc
