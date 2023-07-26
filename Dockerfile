@@ -27,8 +27,10 @@ RUN R -e "install.packages('remotes')"
 RUN R -e "install.packages('BiocManager')"
 RUN R -e "BiocManager::install(c('rtracklayer', 'ReactomePA', 'org.Mm.eg.db', 'org.Hs.eg.db', 'EnhancedVolcano', 'DOSE', 'DESeq2', 'ComplexHeatmap', 'biomaRt'), ask = FALSE)"
 
-# Install main pkg
-RUN echo "Cache busting value: $(date)" && R -e "remotes::install_github('ajandria/futuriandgeDownstream')"
+# Install main package
+RUN echo "Cache busting value: $(date)" && R -e "remotes::install_github('ajandria/futuriandgeDownstream', force = TRUE)"
 
 # Copy test files into Dockerfile
 COPY used-locally-for-testing used-locally-for-testing
+
+RUN R -e "install.packages('tidyverse')"
