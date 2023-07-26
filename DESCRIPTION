@@ -10,6 +10,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    BiocManager (>= 1.30.21.2),
     biomaRt (>= 2.56.1),
     circlize (>= 0.4.15),
     ComplexHeatmap (>= 2.16.0),
@@ -31,13 +32,14 @@ Imports:
     purrr (>= 1.0.1),
     ReactomePA (>= 1.44.0),
     readr (>= 2.1.4),
+    readxl (>= 1.4.3),
     reshape2 (>= 1.4.4),
     rmarkdown (>= 2.23),
     rtracklayer (>= 1.60.0),
     stringr (>= 1.5.0),
     tibble (>= 3.2.1)
 Depends: 
-    R (>= 2.10)
+    R (>= 4.3.0)
 RoxygenNote: 7.2.3
 Suggests: 
     testthat (>= 3.0.0)

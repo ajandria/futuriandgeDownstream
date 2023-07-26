@@ -24,6 +24,19 @@ RUN R -e "install.packages('renv')"
 
 # Change working directory
 WORKDIR /futuriandgeDownstream
+COPY renv.lock renv.lock
+
+# Next, you need to tell renv which library paths to use for package installation. 
+# You can either set the RENV_PATHS_LIBRARY environment variable to a writable path within your Docker container, 
+# or copy the renv auto-loader tools into the container so that a project-local library can be automatically provisioned and used when R is launched.
+# approach two
+RUN mkdir -p renv
+COPY .Rprofile .Rprofile
+COPY renv/activate.R renv/activate.R
+COPY renv/settings.json renv/settings.json
+
+# Finally, you can run renv::restore() to restore packages as defined in the lockfile:
+RUN R -e "renv::restore()"
 
 # Install your package from GitHub
 RUN R -e "install.packages('remotes')"
