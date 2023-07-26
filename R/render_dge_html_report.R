@@ -27,8 +27,10 @@ render_dge_html_report <- function(comparison_name,
                           norm_counts,
                           raw_counts,
                           organism,
-                          output_name,
-                          output_dir = ".") {
+                          output_name
+                          #,
+                          #output_dir = "."
+                          ) {
 
   # Define the path to the R Markdown template
   template_path <- system.file("rmarkdown", "templates", "dge-report-template.Rmd", package = "futuriandgeDownstream")
@@ -43,6 +45,7 @@ render_dge_html_report <- function(comparison_name,
       norm_counts = norm_counts,
       raw_counts = raw_counts
     ),
-    output_file = output_name,
-    output_dir = output_dir)
+    output_file = output_name#,
+    #output_dir = output_dir
+    )
 }

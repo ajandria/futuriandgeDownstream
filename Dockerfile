@@ -17,16 +17,17 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# First, you’ll need to get renv installed on your Docker image. The easiest way to accomplish this is with the remotes package. 
-# For example, if you wanted to install a specific version of renv from GitHub:
-RUN R -e "install.packages('remotes')"
-RUN R -e "install.packages('renv')"
-
 # Change working directory
 WORKDIR /futuriandgeDownstream
 
 # Install your package from GitHub
 RUN R -e "install.packages('remotes')"
+
+# Install Bioconductor packages
+RUN R -e "install.packages('BiocManager')"
+RUN R -e "BiocManager::install(c('rtracklayer', 'ReactomePA', 'org.Mm.eg.db', 'org.Hs.eg.db', 'EnhancedVolcano', 'DOSE', 'DESeq2', 'ComplexHeatmap', 'biomaRt'), ask = FALSE)"
+
+# Install main pkg
 RUN echo "Cache busting value: $(date)" && R -e "remotes::install_github('ajandria/futuriandgeDownstream')"
 
 # Copy test files into Dockerfile
