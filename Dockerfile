@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libxml2-dev \
     libfontconfig1-dev \
-    libfreetype6-dev \
+    libfreetype-dev \
     libgit2-dev \
     libharfbuzz-dev \
     libfribidi-dev \
@@ -34,3 +34,4 @@ RUN echo "Cache busting value: $(date)" && R -e "remotes::install_github('ajandr
 COPY used-locally-for-testing used-locally-for-testing
 
 RUN R -e "install.packages('tidyverse')"
+RUN R -e "BiocManager::install('clusterProfiler', ask = FALSE)"

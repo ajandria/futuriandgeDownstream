@@ -59,9 +59,9 @@ library(heatmaply)
   stop(message('Organism not supported...'))
 }
 
-padj_cutoff <- 0.05
+padj_cutoff <- 0.1
 
-log2foldChange_cutoff <- 1
+log2foldChange_cutoff <- 0.5
 
 comparison_name <- params$comparison_name
 
@@ -693,9 +693,9 @@ kegg_gsea_dge_out <- gseKEGG(
 
 ```{r GSEA_rest, echo = F, fig.height = 12, fig.width = 8.8}
 # WIKI PATHWAYS
-set.seed(the_seed)
-wiki_pathways_gsea <-
-  gseWP(geneList_dge_no_dups, organism = organism_wikipath)
+#set.seed(the_seed)
+#wiki_pathways_gsea <-
+#  gseWP(geneList_dge_no_dups, organism = organism_wikipath)
 # 
 # # REACTOME
 # library(DOSE)
@@ -762,8 +762,10 @@ DT::datatable((data.frame(kegg_gsea_dge_out)))
 
 ```{r print_WIKIp, echo=F}
 #DT::datatable((data.frame(wiki_pathways_gsea))[1:nrow(data.frame(wiki_pathways_gsea)),])
-DT::datatable((data.frame(wiki_pathways_gsea)))
+#DT::datatable((data.frame(wiki_pathways_gsea)))
 ```
+
+Wiki Pathways db service at the time of analysis couldn't be reached 
 
 <!-- ## Reactome Pathways -->
 <!-- ### Top 30 -->
