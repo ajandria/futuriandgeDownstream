@@ -692,7 +692,7 @@ kegg_gsea_dge_out <- gseKEGG(
 ```
 
 ```{r GSEA_rest, echo = F, fig.height = 12, fig.width = 8.8}
- WIKI PATHWAYS
+# WIKI PATHWAYS
 set.seed(the_seed)
 wiki_pathways_gsea <-
   gseWP(geneList_dge_no_dups, organism = organism_wikipath)
